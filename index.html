@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>快点课程</title>
+    <meta content="快点课程,公开课,网课,在线教育,教育,慕课,TED,纪录片" name="keywords">
+    <meta name="referrer" content="no-referrer" />
+    <meta name="description" content="">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <link rel="shortcut icon" type="image/x-icon" href="g">
+    <link rel="stylesheet" href="css/course.css">
+    <link rel="stylesheet" href="https://cdn.jsdmirror.com/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css">
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <a href="/">
+                <img src="/" alt="" width="100px" height="auto">
+            </a>
+        </div>
+        <h1 style="text-align: center; margin: 10px;">快点课程</h1>
+    </header>
+    <section class="contact-section">
+        <div class="container">
+            <div class="pb-4">
+
+                <div class="sort-toType clearfix type-i">
+                    <span class="pull-left title">分类：</span>
+                    <ul class="sort-type-l clearfix pull-left">
+                        <li class="pull-left sort-type-i active" data-code=""><a href="#">全部</a></li>
+                        <li class="pull-left sort-type-i" data-code="1"><a href="#">计算机</a></li>
+                        <li class="pull-left sort-type-i" data-code="2"><a href="#">经济管理</a></li>
+                        <li class="pull-left sort-type-i" data-code="3"><a href="#">心理学</a></li>
+                        <li class="pull-left sort-type-i" data-code="4"><a href="#">外语</a></li>
+                        <li class="pull-left sort-type-i" data-code="5"><a href="#">文学历史</a></li>
+                        <li class="pull-left sort-type-i" data-code="6"><a href="#">艺术设计</a></li>
+                        <li class="pull-left sort-type-i" data-code="7"><a href="#">工学</a></li>
+                        <li class="pull-left sort-type-i" data-code="8"><a href="#">理学</a></li>
+                        <li class="pull-left sort-type-i" data-code="9"><a href="#">医药卫生</a></li>
+                        <li class="pull-left sort-type-i" data-code="16"><a href="#">农林园艺</a></li>
+                        <li class="pull-left sort-type-i" data-code="10"><a href="#">哲学</a></li>
+                        <li class="pull-left sort-type-i" data-code="11"><a href="#">法学</a></li>
+                        <li class="pull-left sort-type-i" data-code="12"><a href="#">思想政治教育</a></li>
+                        <li class="pull-left sort-type-i" data-code="13"><a href="#">教育教学</a></li>
+                        <li class="pull-left sort-type-i" data-code="100"><a href="#">大学先修课</a></li>
+                        <li class="pull-left sort-type-i" data-code="200"><a href="#">职业教育</a></li>
+                        <li class="pull-left sort-type-i" data-code="300"><a href="#">创新创业</a></li>
+                    </ul>
+                </div>
+
+                <div id="courseList"></div>
+
+
+
+                <a class="icourse-bottom-seemorebtn" id="showMoreBtn" data-page="1" href="#">查看更多</a>
+
+                <script>
+                    const courseList = document.querySelector('#courseList');
+                    const showMoreBtn = document.querySelector('#showMoreBtn');
+                    let currentPage = 1;
+                    let currentCategory = '';
+
+                    // 根据分类代码获取课程列表
+                    function getCoursesByCategory(category) {
+                        currentCategory = category;
+                        currentPage = 1;
+                        loadCourses();
+                    }
+
+                    // 加载课程列表
+                    function loadCourses() {
+                        const xhr = new XMLHttpRequest();
+                        xhr.open('GET', `https://www.icourses.cn/web/sword/portal/openSearchPage?kw=&onlineStatus=1&currentPage=${currentPage}&catagoryId=${currentCategory}`);
+                        xhr.onload = () => {
+                            const htmlContent = xhr.responseText;
+                            if (currentPage === 1) {
+                                courseList.innerHTML = htmlContent;
+                            } else {
+                                courseList.insertAdjacentHTML('beforeend', htmlContent);
+                            }
+                            if (currentPage >= 10) {
+                                showMoreBtn.style.display = 'none';
+                            } else {
+                                showMoreBtn.style.display = 'block';
+                            }
+                            currentPage++;
+                        };
+                        xhr.send();
+                    }
+
+                    // 绑定“查看更多”按钮的点击事件
+                    showMoreBtn.addEventListener('click', () => {
+                        loadCourses();
+                    });
+
+                    // 绑定分类列表的点击事件
+                    const categoryList = document.querySelectorAll('.sort-type-i');
+                    categoryList.forEach((category) => {
+                        category.addEventListener('click', (event) => {
+                            event.preventDefault();
+                            const categoryCode = category.dataset.code;
+                            getCoursesByCategory(categoryCode);
+                        });
+                    });
+
+                    // 初始化，加载全部课程
+                    getCoursesByCategory('');
+
+                </script>
+            </div>
+
+
+
+        </div>
+    </section>
+    <footer class="footer">
+        <div class="footer_top">
+            <div class="container">
+                
+            </div>
+        </div>
+        <div class="copy-right_text">
+            <div class="container">
+                <div class="footer_border"></div>
+                <div class="row">
+                    <div class="col-xl-12" style="text-align: center;">
+                      
+                        <p class="copy_right text-center">
+                            <div class="container">
+                                <small class="g-font-size-default g-mr-10 g-mb-10 g-mb-0--md">快点课程&amp; ©<a href="https://wmooc.icourses.cn/">爱课程</a></small>
+                            </div>
+                           
+                        <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                            Copyright &copy;
+                            <script>document.write(new Date().getFullYear());</script> 快点课程 All rights reserved
+                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        </p>
+                       
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <div class="back"><a href="/">返回首页</a></div>
+</body>
+
+</html>
