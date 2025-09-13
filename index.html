@@ -1,70 +1,135 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>快点课程</title>
+    <title>快点课程 - 发现优质在线教育资源</title>
     <meta content="快点课程,公开课,网课,在线教育,教育,慕课,TED,纪录片" name="keywords">
     <meta name="referrer" content="no-referrer" />
-    <meta name="description" content="">
+    <meta name="description" content="发现全球优质在线课程，开启您的学习之旅">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <link rel="shortcut icon" type="image/x-icon" href="g">
     <link rel="stylesheet" href="css/course.css">
-    <link rel="stylesheet" href="https://cdn.jsdmirror.com/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
-    <header>
-        <div class="logo">
-            <a href="/">
-                <img src="/" alt="" width="100px" height="auto">
-            </a>
+    <nav class="nav">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="/">
+                    <span class="logo-text">快点课程</span>
+                </a>
+            </div>
+            <div class="nav-menu">
+                <a href="#courses" class="nav-link">课程</a>
+                <a href="#categories" class="nav-link">分类</a>
+                <a href="#about" class="nav-link">关于</a>
+            </div>
         </div>
-        <h1 style="text-align: center; margin: 10px;">快点课程</h1>
-    </header>
-    <section class="contact-section">
-        <div class="container">
-            <div class="pb-4">
+    </nav>
 
-                <div class="sort-toType clearfix type-i">
-                    <span class="pull-left title">分类：</span>
-                    <ul class="sort-type-l clearfix pull-left">
-                        <li class="pull-left sort-type-i active" data-code=""><a href="#">全部</a></li>
-                        <li class="pull-left sort-type-i" data-code="1"><a href="#">计算机</a></li>
-                        <li class="pull-left sort-type-i" data-code="2"><a href="#">经济管理</a></li>
-                        <li class="pull-left sort-type-i" data-code="3"><a href="#">心理学</a></li>
-                        <li class="pull-left sort-type-i" data-code="4"><a href="#">外语</a></li>
-                        <li class="pull-left sort-type-i" data-code="5"><a href="#">文学历史</a></li>
-                        <li class="pull-left sort-type-i" data-code="6"><a href="#">艺术设计</a></li>
-                        <li class="pull-left sort-type-i" data-code="7"><a href="#">工学</a></li>
-                        <li class="pull-left sort-type-i" data-code="8"><a href="#">理学</a></li>
-                        <li class="pull-left sort-type-i" data-code="9"><a href="#">医药卫生</a></li>
-                        <li class="pull-left sort-type-i" data-code="16"><a href="#">农林园艺</a></li>
-                        <li class="pull-left sort-type-i" data-code="10"><a href="#">哲学</a></li>
-                        <li class="pull-left sort-type-i" data-code="11"><a href="#">法学</a></li>
-                        <li class="pull-left sort-type-i" data-code="12"><a href="#">思想政治教育</a></li>
-                        <li class="pull-left sort-type-i" data-code="13"><a href="#">教育教学</a></li>
-                        <li class="pull-left sort-type-i" data-code="100"><a href="#">大学先修课</a></li>
-                        <li class="pull-left sort-type-i" data-code="200"><a href="#">职业教育</a></li>
-                        <li class="pull-left sort-type-i" data-code="300"><a href="#">创新创业</a></li>
-                    </ul>
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h1 class="hero-title">发现优质在线教育资源</h1>
+                <p class="hero-subtitle">探索全球顶尖大学和机构的高质量课程</p>
+                <div class="hero-cta">
+                    <button class="btn btn-primary" onclick="scrollToCourses()">开始探索</button>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="hero-card">
+                    <div class="card-content">
+                        <div class="card-icon">📚</div>
+                        <h3>精选课程</h3>
+                        <p>来自全球知名院校的优质课程</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="courses" class="courses-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">精选课程</h2>
+                    <p class="section-subtitle">探索来自全球顶尖院校的优质课程</p>
                 </div>
 
-                <div id="courseList"></div>
+                <div id="categories" class="categories">
+                    <div class="category-chips">
+                        <button class="chip active" data-code="">全部</button>
+                        <button class="chip" data-code="1">计算机</button>
+                        <button class="chip" data-code="2">经济管理</button>
+                        <button class="chip" data-code="3">心理学</button>
+                        <button class="chip" data-code="4">外语</button>
+                        <button class="chip" data-code="5">文学历史</button>
+                        <button class="chip" data-code="6">艺术设计</button>
+                        <button class="chip" data-code="7">工学</button>
+                        <button class="chip" data-code="8">理学</button>
+                        <button class="chip" data-code="9">医药卫生</button>
+                        <button class="chip" data-code="16">农林园艺</button>
+                        <button class="chip" data-code="10">哲学</button>
+                        <button class="chip" data-code="11">法学</button>
+                        <button class="chip" data-code="12">思想政治教育</button>
+                        <button class="chip" data-code="13">教育教学</button>
+                        <button class="chip" data-code="100">大学先修课</button>
+                        <button class="chip" data-code="200">职业教育</button>
+                        <button class="chip" data-code="300">创新创业</button>
+                    </div>
+                </div>
 
+                <div id="courseList" class="course-grid"></div>
 
-
-                <a class="icourse-bottom-seemorebtn" id="showMoreBtn" data-page="1" href="#">查看更多</a>
+                <div class="load-more-container">
+                    <button class="btn btn-secondary" id="showMoreBtn" data-page="1">
+                        <span class="btn-text">加载更多</span>
+                        <div class="loading-spinner"></div>
+                    </button>
+                </div>
 
                 <script>
                     const courseList = document.querySelector('#courseList');
                     const showMoreBtn = document.querySelector('#showMoreBtn');
                     let currentPage = 1;
                     let currentCategory = '';
+                    let isLoading = false;
+
+                    // 平滑滚动到课程区域
+                    function scrollToCourses() {
+                        document.getElementById('courses').scrollIntoView({ behavior: 'smooth' });
+                    }
+
+                    // 回到顶部
+                    function scrollToTop() {
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                    }
+
+                    // 显示/隐藏回到顶部按钮
+                    window.addEventListener('scroll', () => {
+                        const backToTop = document.getElementById('backToTop');
+                        if (window.scrollY > 300) {
+                            backToTop.classList.add('visible');
+                        } else {
+                            backToTop.classList.remove('visible');
+                        }
+                    });
+
+                    // 更新分类激活状态
+                    function updateActiveChip(selectedChip) {
+                        document.querySelectorAll('.chip').forEach(chip => {
+                            chip.classList.remove('active');
+                        });
+                        selectedChip.classList.add('active');
+                    }
 
                     // 根据分类代码获取课程列表
-                    function getCoursesByCategory(category) {
+                    function getCoursesByCategory(category, targetElement = null) {
+                        if (targetElement) {
+                            updateActiveChip(targetElement);
+                        }
                         currentCategory = category;
                         currentPage = 1;
                         loadCourses();
@@ -72,37 +137,56 @@
 
                     // 加载课程列表
                     function loadCourses() {
+                        if (isLoading) return;
+
+                        isLoading = true;
+                        showMoreBtn.classList.add('loading');
+
                         const xhr = new XMLHttpRequest();
                         xhr.open('GET', `https://www.icourses.cn/web/sword/portal/openSearchPage?kw=&onlineStatus=1&currentPage=${currentPage}&catagoryId=${currentCategory}`);
                         xhr.onload = () => {
                             const htmlContent = xhr.responseText;
+
+                            // 添加淡入动画
                             if (currentPage === 1) {
                                 courseList.innerHTML = htmlContent;
+                                courseList.style.opacity = '0';
+                                setTimeout(() => {
+                                    courseList.style.opacity = '1';
+                                }, 50);
                             } else {
                                 courseList.insertAdjacentHTML('beforeend', htmlContent);
                             }
+
                             if (currentPage >= 10) {
                                 showMoreBtn.style.display = 'none';
                             } else {
                                 showMoreBtn.style.display = 'block';
                             }
                             currentPage++;
+
+                            isLoading = false;
+                            showMoreBtn.classList.remove('loading');
+                        };
+                        xhr.onerror = () => {
+                            isLoading = false;
+                            showMoreBtn.classList.remove('loading');
                         };
                         xhr.send();
                     }
 
-                    // 绑定“查看更多”按钮的点击事件
+                    // 绑定"加载更多"按钮的点击事件
                     showMoreBtn.addEventListener('click', () => {
                         loadCourses();
                     });
 
-                    // 绑定分类列表的点击事件
-                    const categoryList = document.querySelectorAll('.sort-type-i');
-                    categoryList.forEach((category) => {
-                        category.addEventListener('click', (event) => {
+                    // 绑定分类按钮的点击事件
+                    const categoryButtons = document.querySelectorAll('.chip');
+                    categoryButtons.forEach((button) => {
+                        button.addEventListener('click', (event) => {
                             event.preventDefault();
-                            const categoryCode = category.dataset.code;
-                            getCoursesByCategory(categoryCode);
+                            const categoryCode = button.dataset.code;
+                            getCoursesByCategory(categoryCode, button);
                         });
                     });
 
@@ -114,38 +198,66 @@
 
 
 
-        </div>
-    </section>
+            </div>
+        </section>
+        </section>
+    </main>
+
     <footer class="footer">
-        <div class="footer_top">
-            <div class="container">
-                
+        <div class="footer-content">
+            <div class="footer-section" id="about">
+                <h3>快点课程</h3>
+                <p>发现优质在线教育资源，让学习更简单</p>
             </div>
         </div>
-        <div class="copy-right_text">
-            <div class="container">
-                <div class="footer_border"></div>
-                <div class="row">
-                    <div class="col-xl-12" style="text-align: center;">
-                      
-                        <p class="copy_right text-center">
-                            <div class="container">
-                                <small class="g-font-size-default g-mr-10 g-mb-10 g-mb-0--md">快点课程&amp; ©<a href="https://wmooc.icourses.cn/">爱课程</a></small>
-                            </div>
-                           
-                        <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                            Copyright &copy;
-                            <script>document.write(new Date().getFullYear());</script> 快点课程 All rights reserved
-                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                        </p>
-                       
-                        </p>
-                    </div>
-                </div>
-            </div>
+        <div class="footer-bottom">
+            <p>&copy; <span id="currentYear"></span> 快点课程. 课程来自<a href="https://wmooc.icourses.cn/" target="_blank"
+                    rel="noopener">爱课程</a></p>
         </div>
     </footer>
-    <div class="back"><a href="/">返回首页</a></div>
+
+    <button class="back-to-top" onclick="scrollToTop()" id="backToTop">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 19V5M5 12l7-7 7 7" />
+        </svg>
+    </button>
+
+    <script>
+        // 自动更新年份
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        // 返回顶部功能
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // 显示/隐藏返回顶部按钮
+        window.addEventListener('scroll', function () {
+            const backToTopBtn = document.getElementById('backToTop');
+            if (window.pageYOffset > 300) {
+                backToTopBtn.classList.add('visible');
+            } else {
+                backToTopBtn.classList.remove('visible');
+            }
+        });
+
+        // 平滑滚动到锚点
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>
